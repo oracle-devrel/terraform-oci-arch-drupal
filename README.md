@@ -21,7 +21,7 @@ Instead of figuring out the details of how to run a piece of infrastructure from
 This Module has the following folder structure:
 * [root](): This folder contains a root module.
 * [examples](examples): This folder contains examples of how to use the module:
-  - [Drupal single-node + network deployed by module](examples/drupal-single-no-existing-network): This is an example of how to use the oci-arch-drupal module to deploy Drupal (single-node) with MDS and network cloud infrastrucutre elements deployed within the body of the module.
+  - [Drupal single-node + custom network injected into module](examples/drupal-single-mds-use-existing-network): This is an example of how to use the oci-arch-drupal module to deploy Drupal (single-node) with MDS and network cloud infrastrucutre elements injected into the module.
   - [Drupal multi-node + custom network injected into module](examples/drupal-ha-mds-use-existing-network): This is an example of how to use the oci-arch-drupal module to deploy Drupal HA (multi-node) with MDS and network cloud infrastrucutre elements injected into the module.
   
 To deploy Drupal using this Module with minimal effort use this:
@@ -29,15 +29,25 @@ To deploy Drupal using this Module with minimal effort use this:
 ```hcl
 module "oci-arch-drupal" {
   source                        = "github.com/oracle-devrel/terraform-oci-arch-drupal"
-  tenancy_ocid                  = "<tenancy_ocid>"
-  user_ocid                     = "<user_ocid>"
-  fingerprint                   = "<finger_print>"
-  private_key_path              = "<private_key_path>"
-  region                        = "<oci_region>"
-  compartment_ocid              = "<compartment_ocid>"
-  admin_password                = "<MySQL_admin_password>"
-  drupal_password               = "<Drupal_user_password>"
-  numberOfNodes                 = 1 
+  tenancy_ocid              = "<tenancy_ocid>"
+  vcn_id                    = "<vcn_id>"
+  numberOfNodes             = 1
+  availability_domain_name  = "<availability_domain_name>"
+  compartment_ocid          = "<compartment_ocid>""
+  image_id                  = "<image_id>"
+  shape                     = "<shape>"
+  flex_shape_ocpus          = "<flex_shape_ocpus>"
+  flex_shape_memory         = "<flex_shape_memory>" 
+  label_prefix              = "<label_prefix>""
+  ssh_authorized_keys       = "<ssh_public_key>"
+  mds_ip                    = "<mysql_server_ip_address>"
+  drupal_subnet_id          = "<drupal_subnet_id>"
+  admin_password            = "<admin_password>"
+  admin_username            = "<admin_username>"
+  drupal_schema             = "<drupal_schema>"
+  drupal_name               = "<drupal_name>"
+  drupal_password           = "<drupal_password>"
+  display_name              = "<drupal_instance_name>" 
 }
 ```
 
