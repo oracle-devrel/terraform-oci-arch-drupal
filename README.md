@@ -1,6 +1,6 @@
 # terraform-oci-arch-drupal
 
-These is Terraform module that deploys [Drupal](https://www.drupal.org/) on [Oracle Cloud Infrastructure (OCI)](https://cloud.oracle.com/en_US/cloud-infrastructure).
+This is Terraform module that deploys [Drupal](https://www.drupal.org/) on [Oracle Cloud Infrastructure (OCI)](https://cloud.oracle.com/en_US/cloud-infrastructure).
 
 ## About
 Drupal is one of the most popular content management systems (CMS) available. It is free and open-source, released under the GNU Public License.
@@ -22,7 +22,7 @@ This Module has the following folder structure:
 * [root](): This folder contains a root module.
 * [examples](examples): This folder contains examples of how to use the module:
   - [Drupal single-node + network deployed by module](examples/drupal-single-no-existing-network): This is an example of how to use the oci-arch-drupal module to deploy Drupal (single-node) with MDS and network cloud infrastrucutre elements deployed within the body of the module.
-  - [Drupal multi-node + custom network injected into module](examples/drupal-ha-mds-use-existing-network): This is an example of how to use the oci-arch-drupal module to deploy Drupal HA (multi-node) with MDS and network cloud infrastrucutre elements deployed with network cloud infrastrucutre elements will be injected into the module.
+  - [Drupal multi-node + custom network injected into module](examples/drupal-ha-mds-use-existing-network): This is an example of how to use the oci-arch-drupal module to deploy Drupal HA (multi-node) with MDS and network cloud infrastrucutre elements injected into the module.
   
 To deploy Drupal using this Module with minimal effort use this:
 
@@ -43,7 +43,7 @@ module "oci-arch-drupal" {
 
 Argument | Description
 --- | ---
-compartment_ocid | Compartment's OCID where OKE will be created
+compartment_ocid | Compartment's OCID where Drupal will be created
 use_existing_vcn | If you want to inject already exisitng VCN then you need to set the value to TRUE.
 vcn_cidr | If use_existing_vcn is set to FALSE then you can define VCN CIDR block and then it will used to create VCN within the module.
 vcn_id | If use_existing_vcn is set to TRUE then you can pass VCN OCID and module will use it to create Drupal installation.
