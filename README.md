@@ -28,7 +28,7 @@ To deploy Drupal using this Module with minimal effort use this:
 
 ```hcl
 module "oci-arch-drupal" {
-  source                        = "github.com/oracle-devrel/terraform-oci-arch-drupal"
+  source                    = "github.com/oracle-devrel/terraform-oci-arch-drupal"
   tenancy_ocid              = "<tenancy_ocid>"
   vcn_id                    = "<vcn_id>"
   numberOfNodes             = 1
