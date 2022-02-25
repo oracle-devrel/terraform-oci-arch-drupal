@@ -49,17 +49,17 @@ vcn_cidr | If use_existing_vcn is set to FALSE then you can define VCN CIDR bloc
 vcn_id | If use_existing_vcn is set to TRUE then you can pass VCN OCID and module will use it to create Drupal installation.
 numberOfNodes | If you need HA configuration with LB and FSS then set the value to 2 or more.
 drupal_subnet_id | The OCID of the drupal public (single node) and private (multi node) subnet access. 
-lb_subnet_id | The OCID of the Load Balancer subnet in multi node configuration.
-bastion_subnet_id | The OCID of the Bastion subnet in multi node configuration.
-fss_subnet_id | The OCID of the File Storage Service subnet in multi node configuration. 
+lb_subnet_id | If numberOfNodes set to 2 or more then you can provide OCID of the Load Balancer subnet.
+bastion_subnet_id | If numberOfNodes set to 2 or more then you can use OCID of the Bastion subnet.
+fss_subnet_id | If numberOfNodes set to 2 or more then you can use OCID of the File Storage Service subnet. 
 availability_domain_name | The Availability Domain for deployment.
 display_name | The name of the Drupal instance. 
 shape | Instance shape to use for Drupal node.
 flex_shape_ocpus | If shape is set to Flex shape then you can define Flex Shape OCPUs.
 flex_shape_memory | If shape is set to Flex shape then you can define Flex Shape Memory (GB).
-lb_shape | Load Balancer shape
-flex_lb_min_shape | Load Balancer shape minimum shape when lb_shape=flexible
-flex_lb_max_shape | Load Balancer shape maximum shape when lb_shape=flexible
+lb_shape | If numberOfNodes set to 2 or more then you can define Load Balancer shape
+flex_lb_min_shape | If numberOfNodes set to 2 or more and lb_shape=flexible then you can define Load Balancer minimum shape.
+flex_lb_max_shape | If numberOfNodes set to 2 or more and lb_shape=flexible then you can define Load Balancer maximum shape.
 use_bastion_service | If you want to use OCI Bastion Service then you need to set the value to TRUE.
 bastion_service_region | If use_bastion_service is set to TRUE then you can define bastion service region. 
 bastion_image_id | If use_bastion_service is set to FALSE then you can define Bastion VM image id. 
