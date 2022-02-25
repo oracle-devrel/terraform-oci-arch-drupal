@@ -205,5 +205,6 @@ locals {
 
 variable "defined_tags" {
   description = "Defined tags for WordPress host."
-  default     = ""
+  type        = map(string)
+  default     = {}
 }
