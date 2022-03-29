@@ -2,11 +2,16 @@
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
 output "drupal_home_URL" {
-  value = "http://${module.drupal.public_ip[0]}/"
+  value = "http://${module.oci-arch-drupal.public_ip[0]}/"
 }
 
 output "generated_ssh_private_key" {
-  value     = module.drupal.generated_ssh_private_key
+  value     = module.oci-arch-drupal.generated_ssh_private_key
+  sensitive = true
+}
+
+output "generated_ssh_public_key" {
+  value     = module.oci-arch-drupal.generated_ssh_public_key
   sensitive = true
 }
 

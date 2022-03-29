@@ -80,9 +80,24 @@ variable "flex_lb_max_shape" {
   default = "100"
 }
 
-
 variable "use_bastion_service" {
   default = false
+}
+
+variable "inject_bastion_service_id" {
+  default = false
+}
+
+variable "bastion_service_id" {
+  default = ""
+}
+
+variable "inject_bastion_server_public_ip" {
+  default = false
+}
+
+variable "bastion_server_public_ip" {
+  default = ""
 }
 
 variable "bastion_service_region" {
