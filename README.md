@@ -23,7 +23,8 @@ This Module has the following folder structure:
 * [examples](examples): This folder contains examples of how to use the module:
   - [Drupal single-node + custom network injected into module](examples/drupal-single-mds-use-existing-network): This is an example of how to use the oci-arch-drupal module to deploy Drupal (single-node) with MDS and network cloud infrastrucutre elements injected into the module.
   - [Drupal multi-node + custom network injected into module](examples/drupal-ha-mds-use-existing-network): This is an example of how to use the oci-arch-drupal module to deploy Drupal HA (multi-node) with MDS and network cloud infrastrucutre elements injected into the module.
-  
+  - [Drupal multi-node + custom network + Bastion Host injected into module](examples/drupal-ha-mds-use-existing-network-and-injected-bastion-host): This is an example of how to use the oci-arch-drupal module to deploy Drupal HA (multi-node) with MDS and network cloud infrastrucutre elements + Bastion Host injected into the module.
+  - [Drupal multi-node + custom network + Bastion Service injected into module](examples/drupal-ha-mds-use-existing-network-and-injected-bastion-service): This is an example of how to use the oci-arch-wordpress module to deploy Drupal HA (multi-node) with MDS and network cloud infrastrucutre elements + Bastion Service injected into the module.  
 To deploy Drupal using this Module with minimal effort use this:
 
 ```hcl
@@ -70,6 +71,10 @@ flex_shape_memory | If shape is set to Flex shape then you can define Flex Shape
 lb_shape | If numberOfNodes set to 2 or more then you can define Load Balancer shape
 flex_lb_min_shape | If numberOfNodes set to 2 or more and lb_shape=flexible then you can define Load Balancer minimum shape.
 flex_lb_max_shape | If numberOfNodes set to 2 or more and lb_shape=flexible then you can define Load Balancer maximum shape.
+inject_bastion_service_id | Instead of counting on module to create Bastion Service you can pass Bastion Service OCID as input (set value to TRUE).
+bastion_service_id | If inject_bastion_service_id is set to TRUE then you can pass here Bastion Service OCID as input.
+inject_bastion_server_public_ip  | Instead of counting on module to create Bastion VM you can pass Bastion Host Public IP Address as input (set value to TRUE).
+bastion_server_public_ip | If inject_bastion_server_public_ip is set to TRUE then you can pass here Bastion Host Public IP Address.
 use_bastion_service | If you want to use OCI Bastion Service then you need to set the value to TRUE.
 bastion_service_region | If use_bastion_service is set to TRUE then you can define bastion service region. 
 bastion_image_id | If use_bastion_service is set to FALSE then you can define Bastion VM image id. 
