@@ -54,12 +54,12 @@ data "template_cloudinit_config" "cloud_init" {
 }
 
 locals {
-  php_script       = "~/install_php74.sh"
-  security_script  = "~/configure_local_security.sh"
-  create_drupal_db = "~/create_drupal_db.sh"
-  install_drupal   = "~/install_drupal.sh"
-  htaccess         = "~/htaccess"
-  indexhtml        = "~/index.html"  
+  php_script       = "/home/${var.vm_user}/install_php74.sh"
+  security_script  = "/home/${var.vm_user}/configure_local_security.sh"
+  create_drupal_db = "/home/${var.vm_user}/create_drupal_db.sh"
+  install_drupal   = "/home/${var.vm_user}/install_drupal.sh"
+  htaccess         = "/home/${var.vm_user}/htaccess"
+  indexhtml        = "/home/${var.vm_user}/index.html"  
 }
 
 data "oci_core_subnet" "drupal_subnet_ds" {
@@ -337,6 +337,9 @@ resource "oci_core_public_ip" "drupal_public_ip_for_single_node" {
   #  private_ip_id  = var.numberOfNodes == 1 ? data.oci_core_private_ips.drupal_private_ips1.private_ips[0]["id"] : null
   private_ip_id = data.oci_core_private_ips.drupal_private_ips1.private_ips[0]["id"]
   defined_tags  = var.defined_tags
+  lifecycle {
+    ignore_changes = [defined_tags]
+  }
 }
 
 resource "oci_core_public_ip" "drupal_public_ip_for_multi_node" {
@@ -345,6 +348,9 @@ resource "oci_core_public_ip" "drupal_public_ip_for_multi_node" {
   display_name   = "drupal_public_ip_for_multi_node"
   lifetime       = "RESERVED"
   defined_tags   = var.defined_tags
+  lifecycle {
+    ignore_changes = [defined_tags]
+  }
 }
 
 data "template_file" "install_drupal" {
