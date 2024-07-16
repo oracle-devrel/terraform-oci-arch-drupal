@@ -555,12 +555,12 @@ resource "null_resource" "drupal_provisioner_without_bastion" {
     inline = [
       "chmod +x ${local.php_script}",
       "sudo ${local.php_script}",
+      "chmod +x ${local.install_drupal}",
+      "sudo ${local.install_drupal}",
       "chmod +x ${local.security_script}",
       "sudo ${local.security_script}",
       "chmod +x ${local.create_drupal_db}",
-      "sudo ${local.create_drupal_db}",
-      "chmod +x ${local.install_drupal}",
-      "sudo ${local.install_drupal}"
+      "sudo ${local.create_drupal_db}"
     ]
 
   }
@@ -701,12 +701,12 @@ resource "null_resource" "drupal_provisioner_with_bastion" {
     inline = [
       "chmod +x ${local.php_script}",
       "sudo ${local.php_script}",
+      "chmod +x ${local.install_drupal}",
+      "sudo ${local.install_drupal}",
       "chmod +x ${local.security_script}",
       "sudo ${local.security_script}",
       "chmod +x ${local.create_drupal_db}",
-      "sudo ${local.create_drupal_db}",
-      "chmod +x ${local.install_drupal}",
-      "sudo ${local.install_drupal}"
+      "sudo ${local.create_drupal_db}"
     ]
 
   }
@@ -847,12 +847,12 @@ resource "null_resource" "drupal_provisioner_with_injected_bastion_server_public
     inline = [
       "chmod +x ${local.php_script}",
       "sudo ${local.php_script}",
+      "chmod +x ${local.install_drupal}",
+      "sudo ${local.install_drupal}",
       "chmod +x ${local.security_script}",
       "sudo ${local.security_script}",
       "chmod +x ${local.create_drupal_db}",
-      "sudo ${local.create_drupal_db}",
-      "chmod +x ${local.install_drupal}",
-      "sudo ${local.install_drupal}"
+      "sudo ${local.create_drupal_db}"
     ]
 
   }
