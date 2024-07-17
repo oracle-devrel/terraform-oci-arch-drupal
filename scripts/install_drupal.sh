@@ -15,7 +15,7 @@ if [[ $use_shared_storage == "true" ]]; then
   cd ${drupal_shared_working_dir}
 else
   echo "No mount NFS share. Moving to /var/www/html" 
-  cd /var/www/html	
+  cd /var/www/	
 fi
 
 wget https://www.drupal.org/download-latest/tar.gz
@@ -26,10 +26,11 @@ if [[ $use_shared_storage == "true" ]]; then
   rm -rf ${drupal_shared_working_dir}/drupal-*
   cp ${drupal_shared_working_dir}/sites/default/default.settings.php sites/default/settings.php
 else
-  tar zxvf tar.gz --directory /var/www/html
-  cp -r /var/www/html/drupal-*/* /var/www/html
-  rm -rf /var/www/html/drupal-*
-  cp /var/www/html/sites/default/default.settings.php sites/default/settings.php
+  tar zxvf tar.gz --directory
+  rm -rf html/ tar.gz
+  mv drupal-* html
+  cd html
+  cp sites/default/default.settings.php sites/default/settings.php
 fi 
 
 if [[ $use_shared_storage == "true" ]]; then
@@ -44,7 +45,8 @@ if [[ $use_shared_storage == "true" ]]; then
   rm /home/opc/index.html
   chown apache:apache ${drupal_shared_working_dir}/index.html
 else
-  chown apache:apache -R /var/www/html
+  cd -
+  chown apache. -R html
   sed -i '/AllowOverride None/c\AllowOverride All' /etc/httpd/conf/httpd.conf
 fi
 
