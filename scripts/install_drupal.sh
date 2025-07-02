@@ -14,24 +14,25 @@ if [[ $use_shared_storage == "true" ]]; then
   echo "NFS share mounted."
   cd ${drupal_shared_working_dir}
 else
-  echo "No mount NFS share. Moving to /var/www/html" 
-  cd /var/www/	
+  echo "No mount NFS share. Moving to /var/www/html"
+  cd /var/www/
 fi
 
-wget https://www.drupal.org/download-latest/tar.gz
+#To download latest drupal
+wget https://www.drupal.org/download-latest/tar.gz -O drupal.tar.gz
 
 if [[ $use_shared_storage == "true" ]]; then
-  tar zxvf tar.gz --directory ${drupal_shared_working_dir}
+  tar zxvf drupal.tar.gz --directory ${drupal_shared_working_dir}
   cp -r ${drupal_shared_working_dir}/drupal-*/* ${drupal_shared_working_dir}
   rm -rf ${drupal_shared_working_dir}/drupal-*
   cp ${drupal_shared_working_dir}/sites/default/default.settings.php sites/default/settings.php
 else
-  tar zxvf tar.gz
-  rm -rf html/ tar.gz
+  tar zxvf drupal.tar.gz
+  rm -rf html/ drupal.tar.gz
   mv drupal-* html
   cd html
   cp sites/default/default.settings.php sites/default/settings.php
-fi 
+fi
 
 if [[ $use_shared_storage == "true" ]]; then
   echo "... Changing /etc/httpd/conf/httpd.conf with Document set to new shared NFS space ..."
